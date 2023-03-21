@@ -1,24 +1,25 @@
 let wishlist = [
     {name: "Mini Puzzle", size: "small", clatters: "yes", weight: "light"},
     {name: "Toy Car", size: "medium", clatters: "a bit", weight: "medium"},
-    {name: "Card Game", size: "small", clatters: "no", weight: "light"}
+    {name: "Card Game", size: "small", clatters: "no", weight: "light"},
+    {name: "Cowboys Jersey", size: "medium", clatters: "no", weight: "light"},
+    {name: "Yoga Ball", size: "large", clatters: "no", weight: "light"},
+    {name: "Ravens Helmet", size: "large", clatters: "a bit", weight: "heavy"}
 ];
 
 let presents = [
-    {size: "medium", clatters: "a bit", weight: "medium"},
-    {size: "small", clatters: "yes", weight: "light"}
+    {size: "large", clatters: "a bit", weight: "heavy"},
+    {size: "medium", clatters: "no", weight: "light"}
 ];
 
-const guessTheGift = (arr1, arr2) => {
-    let gifts = [];
-    for (let i = 0; i < arr2.length; i++) {
-        for (let e = 0; e < arr1.length; e++) {
-            if (arr2[i].size === arr1[e].size && arr2[i].clatters === arr1[e].clatters && arr2[i].weight === arr1[e].weight) {
-                 gifts.push(arr1[i].name);
-            }
-         }
-   }
-   return gifts;
-}
+function guessGifts(arr1, arr2) {
+    var r = [];
+    arr2.forEach(function(p){
+      arr1.forEach(function(w){
+        if (p.size == w.size && p.clatters == w.clatters && p.weight == w.weight && r.indexOf(w.name) == -1) r.push(w.name);
+      });
+    });
+    return r;
+  }
 
-console.log(guessTheGift(wishlist, presents))
+console.log(guessGifts(wishlist, presents))
